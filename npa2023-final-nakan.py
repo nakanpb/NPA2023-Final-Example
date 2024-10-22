@@ -68,7 +68,8 @@ while True:
         # extract name of a location (city) where we check for GPS coordinates using the OpenWeather Geocoding API
         # Enter code below to hold city name in location variable.
         # For example location should be "San Jose" if the message is "/chotipat San Jose".
-        location = "/nakan" 
+        location = message.split(" ", 1)
+        print (location[1])
 
 #######################################################################################     
 # 5. Prepare openweather Geocoding APIGetParameters..
@@ -77,7 +78,7 @@ while True:
         # - "limit" is always 1
         # - "key" is the openweather API key, https://home.openweathermap.org/api_keys
         openweatherGeoAPIGetParameters = {
-            "q": location,
+            "q": location[1],
             "limit": 1,
             "appid": "8801da274fef843e378cf4ec353be1fd",
         }
@@ -90,7 +91,7 @@ while True:
                         )
         # Verify if the returned JSON data from the OpenWeather Geocoding API service are OK
         json_data = r.json()
-        print(json_data)
+        print(json.dumps(json_data, indent=5))
         
         # check if the status key in the returned JSON data is "0"
         if not r.status_code == 200:
@@ -104,21 +105,25 @@ while True:
         print(locationLat, locationLng)
 
 # #######################################################################################
-# # 8. Prepare openweatherAPIGetParameters for OpenWeather API, https://openweathermap.org/api; current weather data for one location by geographic coordinates.
-#         # Use current weather data for one location by geographic coordinates API service in Openweathermap
-#         openweatherAPIGetParameters = {
-#                                 "<!!!REPLACEME!!!> with all key:value pairs of parameters!!!>"
-#                             }
+# 8. Prepare openweatherAPIGetParameters for OpenWeather API, https://openweathermap.org/api; current weather data for one location by geographic coordinates.
+        # Use current weather data for one location by geographic coordinates API service in Openweathermap
+        openweatherAPIGetParameters = {
+                                "lat": locationLat,
+                                "lon": locationLng,
+                                "appid": "8801da274fef843e378cf4ec353be1fd",
+                                "units": "metric"
+                            }
 
 # #######################################################################################
-# # 9. Provide the URL to the OpenWeather API; current weather data for one location.
-#         rw = requests.get("<!!!REPLACEME with URL!!!>", 
-#                              params = openweatherAPIGetParameters
-#                         )
-#         json_data_weather = rw.json()
+# 9. Provide the URL to the OpenWeather API; current weather data for one location.
+        rw = requests.get("http://api.openweathermap.org/data/2.5/weather", 
+                             params = openweatherAPIGetParameters
+                        )
+        json_data_weather = rw.json()
 
-#         if not "weather" in json_data_weather:
-#             raise Exception("Incorrect reply from openweathermap API. Status code: {}. Text: {}".format(rw.status_code, rw.text))
+        if not "weather" in json_data_weather:
+            raise Exception("Incorrect reply from openweathermap API. Status code: {}. Text: {}".format(rw.status_code, rw.text))
+        print(json.dumps(json_data_weather, indent=5))
 
 # #######################################################################################
 # # 10. Complete the code to get weather description and weather temperature
