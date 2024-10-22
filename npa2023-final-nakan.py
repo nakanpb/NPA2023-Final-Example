@@ -91,7 +91,7 @@ while True:
                         )
         # Verify if the returned JSON data from the OpenWeather Geocoding API service are OK
         json_data = r.json()
-        print(json.dumps(json_data, indent=5))
+        # print(json.dumps(json_data, indent=5))
         
         # check if the status key in the returned JSON data is "0"
         if not r.status_code == 200:
@@ -126,12 +126,13 @@ while True:
         print(json.dumps(json_data_weather, indent=5))
 
 # #######################################################################################
-# # 10. Complete the code to get weather description and weather temperature
-#         weather_desc = json_data_weather["<!!!REPLACEME!!!> with path to weather description key!!!>"]
-#         weather_temp = json_data_weather["<!!!REPLACEME!!!> with path to weather temperature key!!!>"]
+# 10. Complete the code to get weather description and weather temperature
+        weather_desc = json_data_weather["weather"][0]["description"]
+        weather_temp = json_data_weather["main"]["temp"]
+        print(weather_desc, weather_temp)
 
 # #######################################################################################
-# # 11. Complete the code to format the response message.
+# # 11. Complete the code to format the response messaZge.
 #         # Example responseMessage result: In Austin, Texas (latitude: 30.264979, longitute: -97.746598), the current weather is clear sky and the temperature is 12.61 degree celsius.
 #         responseMessage = "In {} (latitude: {}, longitute: {}), the current weather is {} and the temperature is {} degree celsius.\n".format(<!!!REPLACEME with required variables!!!>)
 #         # print("Sending to Webex Teams: " + responseMessage)
