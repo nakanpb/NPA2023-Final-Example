@@ -132,10 +132,10 @@ while True:
         print(weather_desc, weather_temp)
 
 # #######################################################################################
-# # 11. Complete the code to format the response messaZge.
-#         # Example responseMessage result: In Austin, Texas (latitude: 30.264979, longitute: -97.746598), the current weather is clear sky and the temperature is 12.61 degree celsius.
-#         responseMessage = "In {} (latitude: {}, longitute: {}), the current weather is {} and the temperature is {} degree celsius.\n".format(<!!!REPLACEME with required variables!!!>)
-#         # print("Sending to Webex Teams: " + responseMessage)
+# 11. Complete the code to format the response messaZge.
+        # Example responseMessage result: In Austin, Texas (latitude: 30.264979, longitute: -97.746598), the current weather is clear sky and the temperature is 12.61 degree celsius.
+        responseMessage = "In {} (latitude: {}, longitute: {}), the current weather is {} and the temperature is {} degree celsius.\n".format(location, locationLat, locationLng, weather_desc, weather_temp)
+        print("Sending to Webex Teams: " + responseMessage)
 
 # #######################################################################################
 # # 12. Complete the code to post the message to the Webex Teams room.         
