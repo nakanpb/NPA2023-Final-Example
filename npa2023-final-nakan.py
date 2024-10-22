@@ -9,14 +9,15 @@
  
 #######################################################################################
 # 1. Import libraries for API requests, JSON formatting, and time.
-
-<!!!REPLACEME with code for libraries>
+# <!!!REPLACEME with code for libraries>
+import requests
+import json
+import time
 
 #######################################################################################
 # 2. Assign the Webex hard-coded access token to the variable accessToken.
 
-
-accessToken = "Bearer <!!!REPLACEME with hard-coded token!!!>" 
+accessToken = "Bearer <M2E4MmU3OTctMmM0Zi00NGI0LWFlMTQtNTBjOTBhZTA5YjQyNWIyNTkyNDQtYzhh_P0A1_935f4b77-0a1c-4d96-bc39-d07643ef6a87>" 
 
 #######################################################################################
 # 3. Prepare GetParameters to get the latest message for messages API.
